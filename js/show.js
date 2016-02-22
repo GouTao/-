@@ -83,14 +83,14 @@
 					open("index.html","_self");
 				})
 				//下拉菜单样式及功能
-				$(".show_nav_btn").on("mouseover",function(e){
-					$(this).find(".show_nav_2").show();
-				})
-				$(".show_nav_btn").on("mouseout",function(e){
-					$(this).find(".show_nav_2").hide();
-				})
+//				$(".show_nav_btn").on("mouseover",function(e){
+//					$(this).find(".show_nav_2").show();
+//				})
+//				$(".show_nav_btn").on("mouseout",function(e){
+//					$(this).find(".show_nav_2").hide();
+//				})
 				$(".show_nav_2_btn").on("mousedown",function(e){
-					$(this).parent().hide();
+//					$(this).parent().hide();
 					var command = $(this).html();
 					if(command.charAt(0) == "最")//时间热度
 					{
@@ -202,6 +202,7 @@
 					})
 				})
 				$item.on('mousedown ',function(e){
+					console.log(1);
 					open($(e.currentTarget).children('.url').html(),"_blank");
 				})
 				return $item;
