@@ -1,0 +1,178 @@
+<html>
+	<head>
+		<!--
+        	作者：457754603@qq.com
+        	时间：2016-01-07
+        	描述：Xcoder 
+        -->
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<title>民建风采</title>
+		<!-- main css -->
+		<link rel="stylesheet" href="FlatUI/css/vendor/bootstrap/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="FlatUI/css/animate.css" />
+		<link rel="shortcut icon" href="FlatUI/img/icons/png/Gift-Box.png"/>
+		<link rel="stylesheet" href="css/css.css" />
+	</head>
+	<body>
+		<!--navbarContaner-->
+		<div class="navbarContaner fixed-top">
+			<img src="img/logo.png"</div>
+		</div><!-- /navbarContaner -->
+		<div class="container head">
+			<div class="row headRow">
+				<div class="row col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 minjian" >
+					<h4>民建会员·风采展示平台</h4>
+					<p class="plat animated fadeIn"></p>
+				</div>
+				<div class="row col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3">
+					<br />
+					<div class="head-btn animated fadeInUp" id="enterBtn">点击浏览</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="container content">
+			<div class="row">
+				<div class="col-sm-3 col-sm-offset-1  animated fadeInLeft infoShow">
+					<div class="about">
+						<h3>信息发布<small id="tempNum"></small><small>/</small><small id="totalNum"></small></h3>
+						<hr />
+						<div id="infoContent"> 
+						</div>
+						<hr />
+						<div style="text-align: center;">
+							<button class="btn btn-warning" style="margin-bottom: 5px;" id="lastBtn">上一条</button>
+							<button class="btn btn-warning" style="margin-bottom: 5px;" id="nextBtn">下一条</button>
+						</div>
+					</div>
+				</div>
+			
+				<div class=" col-sm-4 col-sm-offset-4  animated fadeIn" style="padding-left:0 ;padding-right: 0;"> 
+					<div class="about">
+						<h3>关于民建</h3>
+						<hr />
+						<p><b>中国民主建国会</b>是主要由经济界人士组成的、具有政治联盟特点的、致力于建设中国特色社会主义事业的政党。在广大的民建会员中，有为民建事业执着一生的会务工作者，有在人大、政府、政协的领导干部，有经济、科教、法律等各界专家学者，有分布在各行各业勤勉创业、搏击商海的优秀企业家，他们共同为社会主义的建设和发展提供着有力的支持，他们的付出值得肯定。 </p>
+					</div>
+					<div class="about">
+						<h3>关于本平台 </h3>
+						<hr />
+						<p><b>本平台</b>是中国民主建国会成都市委会积极响应政府在新媒体时代做好统一战线思想宣传工作的落地尝试，以网络为载体，利用新媒体思维和技术为会员搭建的相互扶持、资源共享、共同发展的展示平台，通过这个平台扩大统战工作的覆盖面，增强统战宣传的影响力，使现实空间与虚拟空间的统战工作相互联动，相互协调，使网络这一特殊的新兴载体更好地为统战工作服务。</p>
+						<p>本平台是由民建成都市委高新总支会员单位<a href="http://www.sanploy.com">成都三策科技有限公司</a>提供无偿的平台搭建及内容制作服务。</p>
+					</div>
+				</div>
+				<div class=" col-sm-3 animated fadeInRight">
+					<div class="about">
+						<h3>申请展示</h3>
+						<hr />
+						<p>请在下方填写完整填写您的信息，审核通过后将会与您联系，您也可以直接将您的信息及素材打包发送到三策科技企业邮箱：zhou_mi@sanploy.cn</p>
+						<a id="introl" data-toggle="modal"  data-target="#myModal">点击此处查看素材打包格式说明</a>
+						<hr />
+						<form role="form">
+							<div class="form-group">
+						        <label for="mj">所属民建分支机构名称:</label>
+						        <input type="text" class="form-control" id="mj" placeholder="如：民建成都市高新区总支委员会"/>
+						    </div>
+						    <div class="form-group">
+						        <label for="name">姓名:</label>
+						        <input type="text" class="form-control" id="name" placeholder="如：赵大..."/>
+						    </div>
+						    <div class="form-group">
+						        <label for="tel">联系方式（请输入11位手机号码）:</label>
+						        <input type="text" class="form-control" id="tel" placeholder="如：13902800001"/>
+						    </div>
+						    <div class="form-group">
+						        <label for="group">企业或团体名:</label>
+						        <input type="text" class="form-control" id="group" placeholder="如：成都三策科技有限公司"/>
+						    </div>
+						</form>
+						<button class="btn btn-success btn-block btn-lg" id="regBtn">提交</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="forFooter"></div>
+		<div class="container footer">
+			<br />
+			<div class="row col-sm-4 col-sm-offset-2">
+				<span>友情链接</span>
+				<div>
+					<a href="http://www.cndca.org.cn//">中国民主建国会</a>
+					<a href="http://www.mjscsw.gov.cn/">民建四川省委员会</a>
+				</div>
+				<br />
+			</div>
+			<div class="row col-sm-4">
+				<small>网站备案/许可证编号：2015 蜀ICP 16001244</small>
+				<span>技术支持：<a href="http://www.sanploy.com">成都三策科技有限公司</a></span>
+			</div>
+			<br />
+		</div>
+		
+		<!-- 模态框（Modal） -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" 
+		   aria-labelledby="myModalLabel" aria-hidden="true">
+		   <div class="modal-dialog">
+		      <div class="modal-content">
+		         <div class="modal-header">
+		            <button type="button" class="close" 
+		               data-dismiss="modal" aria-hidden="true">
+		                  &times;
+		            </button>
+		            <h4 class="modal-title" id="myModalLabel">
+		             	 素材打包格式说明
+		            </h4>
+		         </div>
+		         <div class="modal-body introlContent" >
+		           	 <h5>尊敬的用户您好:</h5>
+		           	 <p>感谢您使用 民建风采 微场景展示系统。</p>
+         			 <p>微场景主要以覆盖面与传播力都非常强大的微信平台为路径，通过多媒体动态展示手段，对您的企业或组织进行推广。</p>
+		           	 <p>请将相关的资料信息文件存放于文件夹中指定的位置（提供越齐全微场景制作越有效力）</p>
+		        	<hr />
+		        	<h5><b>文案脚本：</b>用于收集所有的文字资料</h5>
+		        	<p>公司/组织介绍.doc：请如实填写公司的相关信息，文件中保留了填写样例（红色字体）。</p>
+		        	<p> 微场景展示脚本.doc：描述微场景的创意脚本，文件中描述了注意事项（蓝色字体）和填写样例（红色字体）。</p>
+		        	<p>其他文字内容：公司、产品、人物等介绍请以doc或ppt文件形式存放于该文件夹中。</p>
+		        	<h5><b>图片内容：</b>用于收集所有的图片文件</h5>
+		        	<p>公司/组织VI包：包含logo、官方视觉图形、图案等 。</p>
+		        	<p>产品、活动、人物、实景图片：存放相关的图片内容，格式支持jpeg、png、psd、ai。图片名称请保持与内容一致。如有其他种类可自行新建文件夹并命名。</p>
+		        	<hr />
+		        	<p>完成以上收集后，请删除空白无用的文件或文件夹，之后将文件夹整体压缩打包，以邮件附件的形式回传到zhou_mi@sanploy.cn</p>
+		        	<hr />
+		        	<a href="http://115.159.39.71/webChat/公司组织名称_资料整理（样例）.rar">点击下载模板文件</a>
+		         </div>
+		      </div><!-- /.modal-content -->
+			</div><!-- /.modal -->
+		</div>
+		<!-- 模态框（Modal） -->
+		<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" 
+		   aria-labelledby="myModalLabel2" aria-hidden="true">
+		   <div class="modal-dialog">
+		      <div class="modal-content">
+		         <div class="modal-header">
+		            <button type="button" class="close" 
+		               data-dismiss="modal" aria-hidden="true">
+		                  &times;
+		            </button>
+		            <h4 class="modal-title" id="myModalLabel2">
+		             	 信息提交验证
+		            </h4>
+		         </div>
+		         <div class="modal-body">
+		         	<form role="form">
+		           	 	<div class="form-group">
+				    	<label for="code">请输入验证码:</label>
+				    	<span id="codePre">996022</span>
+				        <input type="text" class="form-control" id="code" placeholder="请输入验证码..."/>
+					    </div>
+				    </form>
+				    <button class="btn btn-success btn-block" id="subBtn">确认</button>
+		         </div>
+		      </div><!-- /.modal-content -->
+			</div><!-- /.modal -->
+		</div>
+		<script type="text/javascript" src="FlatUI/js/vendor/jquery.min.js" ></script>
+		<script type="text/javascript" src="FlatUI/js/flat-ui.min.js" ></script>
+		<script type="text/javascript" src="js/app.js" ></script>
+	</body>
+</html>
