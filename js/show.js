@@ -4,36 +4,26 @@
 			var windowHeight;
 			$(function(){
 				checkSys();
-//				che
 				getData();
 				//切换搜索
-				$("#show_search_change_btn").on("click",function(e){
-					if($("#show_search_change").html() == "名称查询")
+				$("#input_change").on("click",function(e){
+					if($("#input_change > span").html() == "名称查询")
 					{
-						$("#show_search_change").html("支部查询");
+						$("#input_change > span").html("支部查询");
 					}
 					else
 					{
-						$("#show_search_change").html("名称查询");
-					}
-				})
-				$("#show_search_change").on("click",function(e){
-
-					if($("#show_search_change").html() == "名称查询")
-					{
-						$("#show_search_change").html("支部查询");
-					}
-					else
-					{
-						$("#show_search_change").html("名称查询");
+						$("#input_change > span").html("名称查询");
 					}
 				})
 				//搜索
-				$("#show_search_btn").on("click",function(e){
+				
+				$("#searchBtn").on("click",function(e){
 					
-					var txt = $(".show_search > input").val()
-					var command = $(".show_search_change").html() == "名称查询"?"findByName":"findByArea";
+					var txt = $("#searchKey").val();
 					
+					var command = $("#input_change > span").html() == "名称查询"?"findByName":"findByArea";
+					console.log(command);
 					
 					if(txt!=""){
 						var sendData=new Object();
@@ -50,7 +40,7 @@
 							success: function(data, textStatus)
 							{
 								itemContent.empty();
-								
+								console.log(data);
 								if(data.data.length == 0){
 								
 									noIcon.css("display","inline-block");
@@ -82,67 +72,121 @@
 				$("#returnToMain").on("click",function(e){
 					open("index.html","_self");
 				})
-				//下拉菜单样式及功能
-//				$(".show_nav_btn").on("mouseover",function(e){
-//					$(this).find(".show_nav_2").show();
-//				})
-//				$(".show_nav_btn").on("mouseout",function(e){
-//					$(this).find(".show_nav_2").hide();
-//				})
-				$(".show_nav_2_btn").on("mousedown",function(e){
-//					$(this).parent().hide();
-					var command = $(this).html();
-					if(command.charAt(0) == "最")//时间热度
-					{
-						itemContent.empty();
-						switch(command)
+				
+				$("li").each(function(i){
+					$(this).on("mousedown",function(e){
+	  
+						var command = $(this).html();
+						if(command.charAt(0) == "最")//时间热度
 						{
-							case "最少浏览":
-									items.sort(function(a,b){return Number(a.attr("showNum"))>Number(b.attr("showNum"))?1:-1});
-									for(var i = 0;i<items.length;i++){
-										console.log(items[i].attr("showNum"));
-										itemContent.append(items[i]);
-									}
-								break;
-							case "最多浏览":
-									items.sort(function(a,b){return Number(a.attr("showNum"))<Number(b.attr("showNum"))?1:-1});
-									for(var i = 0;i<items.length;i++){
-										console.log(items[i].attr("showNum"));
-										itemContent.append(items[i]);
-									}
-								break;
-							case "最新发布":
-									items.sort(function(a,b){return Number(a.attr("time"))<Number(b.attr("time"))?1:-1});
-									for(var i = 0;i<items.length;i++){
-										console.log(items[i].attr("time"));
-										itemContent.append(items[i]);
-									}
-								break;
-							case "最早发布":
-									items.sort(function(a,b){return Number(a.attr("time"))>Number(b.attr("time"))?1:-1});
-									for(var i = 0;i<items.length;i++){
-										console.log(items[i].attr("time"));
-										itemContent.append(items[i]);
-									}
-								break;
-						}
-					}
-					else//所属类型
-					{
-
-						itemContent.empty();
-						for(var i = 0;i<items.length;i++)
-						{
-							if(items[i].attr("type") == command)
+							itemContent.empty();
+							switch(command)
 							{
-								itemContent.append(items[i]);
-								return;
+								case "最少浏览":
+										items.sort(function(a,b){return Number(a.attr("showNum"))>Number(b.attr("showNum"))?1:-1});
+										for(var i = 0;i<items.length;i++){
+											console.log(items[i].attr("showNum"));
+											itemContent.append(items[i]);
+										}
+									break;
+								case "最多浏览":
+										items.sort(function(a,b){return Number(a.attr("showNum"))<Number(b.attr("showNum"))?1:-1});
+										for(var i = 0;i<items.length;i++){
+											console.log(items[i].attr("showNum"));
+											itemContent.append(items[i]);
+										}
+									break;
+								case "最新发布":
+										items.sort(function(a,b){return Number(a.attr("time"))<Number(b.attr("time"))?1:-1});
+										for(var i = 0;i<items.length;i++){
+											console.log(items[i].attr("time"));
+											itemContent.append(items[i]);
+										}
+									break;
+								case "最早发布":
+										items.sort(function(a,b){return Number(a.attr("time"))>Number(b.attr("time"))?1:-1});
+										for(var i = 0;i<items.length;i++){
+											console.log(items[i].attr("time"));
+											itemContent.append(items[i]);
+										}
+									break;
 							}
 						}
-						noIcon.css("display","inline-block");
-						itemContent.append(noIcon);
-					}
+						else//所属类型
+						{
+	
+							itemContent.empty();
+							for(var i = 0;i<items.length;i++)
+							{
+								if(items[i].attr("type") == command)
+								{
+									itemContent.append(items[i]);
+									return;
+								}
+							}
+							noIcon.css("display","inline-block");
+							itemContent.append(noIcon);
+						}
+						return;
+					})
 				})
+				
+				
+//				$(".show_nav_2_btn").on("mousedown",function(e){
+//
+//					var command = $(this).html();
+//					if(command.charAt(0) == "最")//时间热度
+//					{
+//						itemContent.empty();
+//						switch(command)
+//						{
+//							case "最少浏览":
+//									items.sort(function(a,b){return Number(a.attr("showNum"))>Number(b.attr("showNum"))?1:-1});
+//									for(var i = 0;i<items.length;i++){
+//										console.log(items[i].attr("showNum"));
+//										itemContent.append(items[i]);
+//									}
+//								break;
+//							case "最多浏览":
+//									items.sort(function(a,b){return Number(a.attr("showNum"))<Number(b.attr("showNum"))?1:-1});
+//									for(var i = 0;i<items.length;i++){
+//										console.log(items[i].attr("showNum"));
+//										itemContent.append(items[i]);
+//									}
+//								break;
+//							case "最新发布":
+//									items.sort(function(a,b){return Number(a.attr("time"))<Number(b.attr("time"))?1:-1});
+//									for(var i = 0;i<items.length;i++){
+//										console.log(items[i].attr("time"));
+//										itemContent.append(items[i]);
+//									}
+//								break;
+//							case "最早发布":
+//									items.sort(function(a,b){return Number(a.attr("time"))>Number(b.attr("time"))?1:-1});
+//									for(var i = 0;i<items.length;i++){
+//										console.log(items[i].attr("time"));
+//										itemContent.append(items[i]);
+//									}
+//								break;
+//						}
+//					}
+//					else//所属类型
+//					{
+//
+//						itemContent.empty();
+//						for(var i = 0;i<items.length;i++)
+//						{
+//							if(items[i].attr("type") == command)
+//							{
+//								itemContent.append(items[i]);
+//								return;
+//							}
+//						}
+//						noIcon.css("display","inline-block");
+//						itemContent.append(noIcon);
+//					}
+//					return;
+//				})
 			})
 			$(window).resize(onResize);
 			function onResize(){
