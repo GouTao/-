@@ -72,7 +72,13 @@
 				$("#returnToMain").on("click",function(e){
 					open("index.html","_self");
 				})
-				
+				//全部按钮
+				$("#allBtn").on("mousedown",function(e){
+					itemContent.empty();
+					for(var i = 0;i<items.length;i++){
+							itemContent.append(items[i]);
+					}
+				})
 				$("li").each(function(i){
 					$(this).on("mousedown",function(e){
 	  

@@ -48,7 +48,7 @@
 
 
 .dropdown{
-	width: 50%;
+	width: 33.3%;
 	float: left;
 }
 .dropdown-menu li{
@@ -57,10 +57,20 @@
 	border-bottom: 1px solid #cccccc;
 	color: #666666;
 }
+.dropdown-menu li:last-child{
+	border-bottom:none;
+}
 .dropdown-toggle{
 	border-radius: 0;
 	background-color: rgba(245,245,245,0.8);
 	border: 1px solid #cccccc;
+}
+
+#allBtn{
+	border-radius: 0;
+	background-color: rgba(245,245,245,0.8);
+	border: 1px solid #cccccc;
+	width: 100%;
 }
 
 .nav_content{
