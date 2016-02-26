@@ -56,7 +56,6 @@
 									var type = this.type;//所属类型
 									
 									var item = creatIconItem(name,pcUrl,address,showNum,time,type);
-									console.log(this);
 									itemContent.append(item);
 								});
 							},
@@ -78,6 +77,7 @@
 					for(var i = 0;i<items.length;i++){
 							itemContent.append(items[i]);
 					}
+					bindMouseDown();
 				})
 				$("li").each(function(i){
 					$(this).on("mousedown",function(e){
@@ -133,67 +133,22 @@
 							noIcon.css("display","inline-block");
 							itemContent.append(noIcon);
 						}
+						bindMouseDown();
 						return;
 					})
 				})
 				
-				
-//				$(".show_nav_2_btn").on("mousedown",function(e){
-//
-//					var command = $(this).html();
-//					if(command.charAt(0) == "最")//时间热度
-//					{
-//						itemContent.empty();
-//						switch(command)
-//						{
-//							case "最少浏览":
-//									items.sort(function(a,b){return Number(a.attr("showNum"))>Number(b.attr("showNum"))?1:-1});
-//									for(var i = 0;i<items.length;i++){
-//										console.log(items[i].attr("showNum"));
-//										itemContent.append(items[i]);
-//									}
-//								break;
-//							case "最多浏览":
-//									items.sort(function(a,b){return Number(a.attr("showNum"))<Number(b.attr("showNum"))?1:-1});
-//									for(var i = 0;i<items.length;i++){
-//										console.log(items[i].attr("showNum"));
-//										itemContent.append(items[i]);
-//									}
-//								break;
-//							case "最新发布":
-//									items.sort(function(a,b){return Number(a.attr("time"))<Number(b.attr("time"))?1:-1});
-//									for(var i = 0;i<items.length;i++){
-//										console.log(items[i].attr("time"));
-//										itemContent.append(items[i]);
-//									}
-//								break;
-//							case "最早发布":
-//									items.sort(function(a,b){return Number(a.attr("time"))>Number(b.attr("time"))?1:-1});
-//									for(var i = 0;i<items.length;i++){
-//										console.log(items[i].attr("time"));
-//										itemContent.append(items[i]);
-//									}
-//								break;
-//						}
-//					}
-//					else//所属类型
-//					{
-//
-//						itemContent.empty();
-//						for(var i = 0;i<items.length;i++)
-//						{
-//							if(items[i].attr("type") == command)
-//							{
-//								itemContent.append(items[i]);
-//								return;
-//							}
-//						}
-//						noIcon.css("display","inline-block");
-//						itemContent.append(noIcon);
-//					}
-//					return;
-//				})
 			})
+			
+			function bindMouseDown(){
+				console.log(items.length)
+				for(var i in items){
+					items[i].unbind("mousedown").bind("mousedown",function(e){
+						open($(e.currentTarget).children('.url').html(),"_blank");
+					})
+				}
+			}
+			
 			$(window).resize(onResize);
 			function onResize(){
 //				windowHeight = $(window).;
@@ -231,21 +186,13 @@
 				var $item=$(
 					"<div  class='item'  showNum='"+showNum+"' time='"+time+"' type='"+type+"'>"+
 						"<img style='width: 100%;' src='"+pc+"'/><br /><br />"+
-						"<p style='color: #00A1CB;'>"+name+"</p>"+
+						"<p class='item_name' style='color: #00A1CB;'>"+name+"</p>"+
 						"<p><b>行业类型：</b>"+type+"</p>"+
 						"<p><b>浏览热度：</b>"+showNum+"</p>"+
 						"<p><b>发布时间：</b>"+new Date(parseInt(time)).toLocaleString().replace(/年|月/g, "-").replace(/日/g, " ") +"</p>"+
 						"<p class='url' style='display: none;'>"+url+"</p>"+
 					"</div>"
 				)
-//				$item.css({
-//					"width":"300px",
-//					"background-color":"white",
-//					"padding":"5px",
-//					"margin":"40px",
-//					 "display":"inline-block",
-//					 "box-shadow":"2px 2px 10px #cccccc"
-//				})
 				$item.children('p').each(function(){
 					$(this).css({
 						"padding":"0 10px",

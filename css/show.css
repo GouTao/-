@@ -95,7 +95,14 @@
 		margin-top:100px;
 	}
 	.item{
-		margin: 20px 0;
-		width: 100%;
+		margin: 1%;
+		width: 45%;
+	}
+	.item p{
+		display: none;
+	}
+	.item .item_name{
+		display: block;
+		vertical-align: top;
 	}
 }
