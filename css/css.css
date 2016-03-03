@@ -27,7 +27,7 @@ body{
 	text-align: center;
 }
 .head{
-	background: url(../img/bg.png) 50% 20% no-repeat;
+	background: url(../img/banner.jpg) 50% 50% no-repeat;
 	background-size: cover;
 	margin: 0;
 	width: 100%;
@@ -36,11 +36,20 @@ body{
 	z-index: 1000;
 }
 .headRow{
-	margin: 100px 0 50px 0;
+	margin: 80px 0 50px 0;
 	padding: 0px;
 }
 .minjian{
 	text-align: center;
+}
+.logoContent{
+	height: auto;
+}
+.logo{
+	width: 100%;
+	max-width: 600px;
+	display: block;
+	margin: auto
 }
 .plat{
 	width: 100%;
@@ -63,12 +72,14 @@ body{
 	border: 2px solid white;
 	background-color: rgba(0,0,0,0);
 	color: white;
-	padding: 10px 40px;
-	font-size: 1.1em;
+	padding: 5px 10px;
+	font-size: 1.4em;
 	font-weight: bolder;
-	border-radius: 10px;
+	border-radius: 25px;
 	margin: auto;
-	width: 200px;
+	width: 180px;
+	letter-spacing: 3px;
+	cursor: pointer;
 }
 .head-btn:hover{
 	background-color: rgb(255,255,255);
@@ -87,7 +98,7 @@ body{
 	margin-bottom: 20px;
 }
 .content{
-	padding-top: 255px;
+	padding-top: 220px;
 }
 .about h3{
 	margin-top: 10px;
@@ -187,5 +198,11 @@ body{
 @media only screen and (min-width: 768px) {
 	.infoShow{
 		position: fixed;
+	}
+	.logoContent{
+		height: 80px;
+	}
+	.content{
+		padding-top: 260px;
 	}
 }

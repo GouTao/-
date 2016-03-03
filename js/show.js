@@ -6,23 +6,23 @@
 				checkSys();
 				getData();
 				//切换搜索
-				$("#input_change").on("click",function(e){
-					if($("#input_change > span").html() == "名称查询")
+				$("#searchBtn_change").on("click",function(e){
+					$("#searchKey").val("");
+					if($("#searchKey").attr("placeholder") == "名称查询")
 					{
-						$("#input_change > span").html("支部查询");
+						$("#searchKey").attr("placeholder","支部查询");
 					}
 					else
 					{
-						$("#input_change > span").html("名称查询");
+						$("#searchKey").attr("placeholder","名称查询");
 					}
 				})
 				//搜索
-				
 				$("#searchBtn").on("click",function(e){
 					
 					var txt = $("#searchKey").val();
 					
-					var command = $("#input_change > span").html() == "名称查询"?"findByName":"findByArea";
+					var command = $("#searchKey").attr("placeholder") == "名称查询"?"findByName":"findByArea";
 					console.log(command);
 					
 					if(txt!=""){
@@ -40,7 +40,7 @@
 							success: function(data, textStatus)
 							{
 								itemContent.empty();
-								console.log(data);
+//								console.log(data);
 								if(data.data.length == 0){
 								
 									noIcon.css("display","inline-block");
@@ -54,8 +54,9 @@
 									var address = this.code;//链接地址
 									var time = this.createdTime;//创建时间
 									var type = this.type;//所属类型
+									var belong = this.belong;
 									
-									var item = creatIconItem(name,pcUrl,address,showNum,time,type);
+									var item = creatIconItem(name,pcUrl,address,showNum,time,type,belong);
 									itemContent.append(item);
 								});
 							},
@@ -79,7 +80,7 @@
 					}
 					bindMouseDown();
 				})
-				$("li").each(function(i){
+				$("li > a").each(function(i){
 					$(this).on("mousedown",function(e){
 	  
 						var command = $(this).html();
@@ -120,18 +121,23 @@
 						}
 						else//所属类型
 						{
-	
+							var id = 0;
 							itemContent.empty();
 							for(var i = 0;i<items.length;i++)
 							{
 								if(items[i].attr("type") == command)
 								{
+									id++;
 									itemContent.append(items[i]);
-									return;
 								}
 							}
-							noIcon.css("display","inline-block");
-							itemContent.append(noIcon);
+							console.log(id)
+							if(id == 0)
+							{
+								noIcon.css("display","inline-block");
+								itemContent.append(noIcon);
+							}
+							
 						}
 						bindMouseDown();
 						return;
@@ -141,7 +147,7 @@
 			})
 			
 			function bindMouseDown(){
-				console.log(items.length)
+//				console.log(items.length)
 				for(var i in items){
 					items[i].unbind("mousedown").bind("mousedown",function(e){
 						open($(e.currentTarget).children('.url').html(),"_blank");
@@ -181,12 +187,14 @@
 			 * @param 热度
 			 * @param 创建时间
 			 * @paran 类型
+			 * @param 支部
 			 */
-			function creatIconItem(name,pc,url,showNum,time,type){
+			function creatIconItem(name,pc,url,showNum,time,type,belong){
 				var $item=$(
 					"<div  class='item'  showNum='"+showNum+"' time='"+time+"' type='"+type+"'>"+
 						"<img style='width: 100%;' src='"+pc+"'/><br /><br />"+
 						"<p class='item_name' style='color: #00A1CB;'>"+name+"</p>"+
+						"<p><b>所属支部：</b>"+belong+"</p>"+
 						"<p><b>行业类型：</b>"+type+"</p>"+
 						"<p><b>浏览热度：</b>"+showNum+"</p>"+
 						"<p><b>发布时间：</b>"+new Date(parseInt(time)).toLocaleString().replace(/年|月/g, "-").replace(/日/g, " ") +"</p>"+
@@ -196,7 +204,13 @@
 				$item.children('p').each(function(){
 					$(this).css({
 						"padding":"0 10px",
+						"text-align":"left"
 					})
+					if($(this).hasClass("item_name")){
+						$(this).css({
+							"text-align":"center"
+						})
+					}
 				})
 				$item.on('mousedown ',function(e){
 					console.log(1);
@@ -226,12 +240,18 @@
 							var address = this.code;//链接地址
 							var time = this.createdTime;//创建时间
 							var type = this.type;//所属类型
+							var belong = this.belong;
 							
-							var item = creatIconItem(name,pcUrl,address,showNum,time,type);
+							var item = creatIconItem(name,pcUrl,address,showNum,time,type,belong);
 							items.push(item);
 
 							itemContent.append(item);
 						});
+						items.sort(function(a,b){return Number(a.attr("time"))<Number(b.attr("time"))?1:-1});
+						for(var i = 0;i<items.length;i++){
+							console.log(items[i].attr("time"));
+							itemContent.append(items[i]);
+						}
 					},
 					error:function(){
 //						console.log("XX");

@@ -95,9 +95,9 @@ function createInfoBoard(){
 	for(var i=0;i<infoArr.length;i++){
 		var $content=$(
 			"<div>"+
-				"<p style='text-indent: 0;font-size: 1.1em;'>发布者:<small>"+infoArr[i].user+"</small></p>"+
-				"<p style='text-indent: 0;font-size: 1.1em;'>发布时间:<small>"+infoArr[i].time+"</small></p>"+
-				"<p style='text-indent: 0;font-size: 1.1em; '>内容:<small style='word-break:break-all'>"+infoArr[i].content+"</small></p>"+
+				"<p style='text-indent: 0;font-size: 1.1em;'><span style='font-weight:bold'>发布者:</span><small>"+infoArr[i].user+"</small></p>"+
+				"<p style='text-indent: 0;font-size: 1.1em;'><span style='font-weight:bold'>发布时间:</span><small>"+infoArr[i].time+"</small></p>"+
+				"<p style='text-indent: 0;font-size: 1.1em; '><span style='font-weight:bold'>内容:</span><small style='word-break:break-all'>"+infoArr[i].content+"</small></p>"+
 			"</div>"	
 		)
 		if(i!=0){

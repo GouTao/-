@@ -2,22 +2,76 @@
 	margin: 0;
 	padding: 0;
 	transition: all .3s;
-}
-
-.show_head img{
-	float: left;
-}
-
-.m-head{
-	background: url(../img/bg.png) 50% 20% no-repeat;
 	text-align: center;
-	padding-bottom:0 ;
-	padding-left: 0;
-	padding-right: 0;
 }
-.m-head h4{
-	color: white;
+
+.head{
+	background: url(../img/banner.jpg) 50% 50% no-repeat;
+	width: 100%;
 }
+.head img{
+	display: block;
+	margin: 40px auto;
+}
+.head h4{
+	text-align: center;
+	color: #ffffff;
+}
+.head_left{
+	float: left;
+	width: 50%;
+}
+
+
+.btn-group{
+	width: 100%;
+}
+.btn-group button{
+	/*background-color: #000000;*/
+	border-radius: 0;
+}
+.btn-group .head_right_item{
+	float: left;
+	width: 33.3333333333%;
+	
+}
+.btn-group .head_right_item button{
+	width:100%;
+}
+.head_right_item button {
+	border-radius: 0;
+}
+.dropdown-menu{
+	/*background-color: #eeeeee;*/
+	width: 100%;
+	/*min-width: 80px;*/
+}
+.dropdown li:hover{
+	margin-left: 10px;
+}
+input{
+	text-align: left;
+}
+
+.head_right{
+	float: left;
+	width: 50%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .showContent{
 	padding-top: 106px;
@@ -31,78 +85,64 @@
 	background: #FFFFFF;
 	margin: 70px auto;
 	margin-bottom:10px;
-	padding-top: 20px;
+	padding-top: 10px;
+	margin-top: 90px;
 }
 #nothing{
 	display: none;
+	text-align:center;
+	color:#999999;
+	margin-bottom: 30px;
 }
 .item{
 	width:300px;
 	background-color:white;
 	padding:5px;
-	margin:40px;
+	margin:30px;
 	display:inline-block;
+	/*float: left;*/
+	
 	box-shadow:2px 2px 10px #cccccc;
 }
 
 
 
-.dropdown{
-	width: 33.3%;
-	float: left;
-}
-.dropdown-menu li{
-	padding:3px 10px ;
-	text-align: left;
-	border-bottom: 1px solid #cccccc;
-	color: #666666;
-}
-.dropdown-menu li:last-child{
-	border-bottom:none;
-}
-.dropdown-toggle{
-	border-radius: 0;
-	background-color: rgba(245,245,245,0.8);
-	border: 1px solid #cccccc;
-}
 
-#allBtn{
-	border-radius: 0;
-	background-color: rgba(245,245,245,0.8);
-	border: 1px solid #cccccc;
-	width: 100%;
-}
 
-.nav_content{
-	background-color: rgba(200,200,200,0.7);
-}
-#sendContent{
-	width: 85%;
-	float:left;
-}
-#searchBtn{
-	width: 15%;
-	float: left;
-	border-radius: 0;
-}
+
 
 @media only screen and (min-width: 100px) and (max-width: 768px) {
-	#nothing{
-		width: 80%;
+	.head img{
+		margin: 10px auto;
 	}
-	.show_item{
-		padding-top: 0px;
-		margin-top:100px;
+	.head_left,.head_right{
+		width: 100%;
+	}
+}
+
+@media only screen and (min-width: 100px) and (max-width: 880px) {
+	*{
+		/*font-size: 16px;*/
 	}
 	.item{
-		margin: 1%;
-		width: 45%;
+		width: 40%;
+		margin: 30px 2%;
+		margin-top: 10px;
 	}
 	.item p{
 		display: none;
 	}
 	.item .item_name{
 		display: block;
-		vertical-align: top;
 	}
 }
+
+
+
+
+
+
+
+
+
+

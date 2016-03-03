@@ -18,61 +18,63 @@
 	</head>
 	<body>
 		
-		<div class="navbarContaner fixed-top m-head">
+		<div class="head">
 			<img src="img/logo.png" />
 			<h4 id="returnToMain">>>民建会员·风采展示平台<<</h4>
 			<br />
-			<div class="container nav_content">
-				<div class="row">
-					<div class="col-sm-6 col-md-5 col-md-offset-1">
-						<div class="input-group" id="sendContent">
-				         	<span class="input-group-addon" id="input_change"><img src="img/changeIcon.jpg" style="height: 20px;"/><span id="targ">名称查询</span></span>
-				         	<input type="text" class="form-control" placeholder="点击标签可以切换搜索类型" id="searchKey">
-				      	</div>
-						<button class="btn btn-default btn-block" id="searchBtn">搜索</button>
-					</div>
-					<div class="col-sm-6 col-md-5">
-						<div class="dropdown">
-						    <button type="button" class="btn dropdown-toggle btn-block" id="dropdownMenu1" data-toggle="dropdown" >
-						     	排序浏览
-						      	<span class="caret"></span>
-						    </button>
-						    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" id="userList">
-						        <li >最多浏览</li>
-						        <li >最少浏览</li>
-						        <li >最新发布</li>
-						        <li >最早发布</li>
-						    </ul>
-						</div>
-						<div class="dropdown">
-						    <button type="button" class="btn dropdown-toggle btn-block" id="dropdownMenu2" data-toggle="dropdown" >
-						     	行业分类
-						      	<span class="caret"></span>
-						    </button>
-						    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2" id="userList">
-						        <li >IT|通信|电子|互联网</li>
-								<li >金融业</li>
-								<li >房地产|建筑业</li>
-								<li >商业服务</li>
-								<li >贸易|批发|零售|租赁业</li>
-								<li >文体教育|工艺美术</li>
-								<li >生产|加工|制造</li>
-								<li >交通|运输|物流|仓储</li>
-								<li >服务业</li>
-								<li >文化|传媒|娱乐|体育</li>
-								<li >能源|矿产|环保</li>
-								<li >政府|非盈利机构</li>
-								<li >农|林|牧|渔|其他</li>
-						    </ul>
-						</div>
-						<div class="dropdown">
-							<button class="btn btn-default" id="allBtn">
-								显示全部
-							</button>
-						</div>
-					</div>
+			<div class="head_left">
+				
+				<div class="input-group">
+					<span class="input-group-btn" id="searchBtn_change">
+						<button class="btn btn-info">点击切换搜索方式</button>
+					</span>
+					<input type="text" class="form-control" placeholder="名称查询" id="searchKey"/>  <!--按支部搜索-->
+					<span class="input-group-btn">
+						<button class="btn btn-info " id="searchBtn">搜索</button>
+					</span>
 				</div>
 			</div>
+			<div class="head_right">
+				<div class="btn-group">
+					<div class="dropdown head_right_item">
+						<button class="btn dropdown-toggle btn-info" data-toggle = "dropdown">排序浏览
+							<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu">
+							<li><a>最多浏览</a></li>
+							<li><a>最少浏览</a></li>
+							<li><a  id="normal">最新发布</a></li>
+							<li><a>最早发布</a></li>
+						</ul>
+					</div>
+					
+					<div class="dropdown head_right_item">
+						<button class="btn dropdown-toggle btn-info" data-toggle = "dropdown">类型分类
+							<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu">
+							<li><a>IT|通信|电子|互联网</a></li>
+							<li><a>金融业</a></li>
+							<li><a>房地产|建筑业</a></li>
+							<li><a>商业服务</a></li>
+							<li><a>贸易|批发|零售|租赁业</a></li>
+							<li><a>文体教育|工艺美术</a></li>
+							<li><a>生产|加工|制造</a></li>
+							<li><a>交通|运输|物流|仓储</a></li>
+							<li><a>服务业</a></li>
+							<li><a>文化|传媒|娱乐|体育</a></li>
+							<li><a>能源|矿产|环保</a></li>
+							<li><a>政府|非盈利机构</a></li>
+							<li><a>农|林|牧|渔|其他</a></li>
+						</ul>
+					</div>
+					
+					<button  class="btn btn-info head_right_item" id="allBtn">显示全部</button>
+				</div>
+					
+				
+			</div>
+			
 		</div>
 		
 		
@@ -80,7 +82,7 @@
 			
 			<div class="show_item">
 				<!--<img  src="img/nothing.jpg" />-->
-				<h2 id="nothing" style="text-align:center;color:#999999;margin-bottom: 30px;">没有查询结果</h2>
+				<h2 id="nothing">没有查询结果</h2>
 			</div>
 		</div>
 	
