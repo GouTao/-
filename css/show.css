@@ -22,6 +22,9 @@
 	width: 50%;
 }
 
+#returnToMain{
+	cursor:pointer;
+}
 
 .btn-group{
 	width: 100%;

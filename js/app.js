@@ -38,7 +38,7 @@ $(document).ready(function(){
 		ifTel=regTel($("#tel").val());
 		$("#group").val()==''?ifGroup=false:ifGroup=true;
 		
-		if(ifMj&&ifName&&ifGroup&&ifTel){
+		if(ifName&&ifGroup&&ifTel){
 			regCode="";
 			for(var i=0;i<6;i++){
 				regCode+=Math.floor((Math.random()*10)).toString();
@@ -47,14 +47,14 @@ $(document).ready(function(){
 			$("#myModal2").modal();
 		}
 		else{
-			alert("请确保您已经按要求完整填写所属民建分支机构名称、姓名、联系方式、企业或团体名称四项内容");
+			alert("请确保您已经按要求完整填写姓名、联系方式、企业或团体名称三项内容");
 		}
 	})
 	$("#subBtn").unbind("click").bind("click",function(){
 		if($("#code").val()==regCode){
 			var sendObj=new Object;
 			sendObj.command="sendEmail";
-			sendObj.branchName=$("#mj").val();
+			sendObj.branchName="";
 			sendObj.name=$("#name").val();
 			sendObj.phoneNum=$("#tel").val();
 			sendObj.organization=$("#group").val();
@@ -80,7 +80,7 @@ $(document).ready(function(){
 					
 				},
 				error:function(){
-					aler("链接失败，请尝试重新发送信息。");
+					alert("链接失败，请尝试重新发送信息。");
 					$("#myModal2").modal("hide");
 				}
 			});

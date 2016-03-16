@@ -189,15 +189,16 @@
 			 * @paran 类型
 			 * @param 支部
 			 */
-			function creatIconItem(name,pc,url,showNum,time,type,belong){
+			function creatIconItem(name,pc,url,showNum,time,type,belong,id){
 				var $item=$(
 					"<div  class='item'  showNum='"+showNum+"' time='"+time+"' type='"+type+"'>"+
-						"<img style='width: 100%;' src='"+pc+"'/><br /><br />"+
-						"<p class='item_name' style='color: #00A1CB;'>"+name+"</p>"+
+						"<img style='width: 100%;border:1px solid #efefef;padding:10px;background-color:#efefef' src='"+pc+"'/><br />"+
+						"<p class='item_name' style='color: #00A1CB;margin-top:10px'>"+name+"</p>"+
 						"<p><b>所属支部：</b>"+belong+"</p>"+
 						"<p><b>行业类型：</b>"+type+"</p>"+
 						"<p><b>浏览热度：</b>"+showNum+"</p>"+
 						"<p><b>发布时间：</b>"+new Date(parseInt(time)).toLocaleString().replace(/年|月/g, "-").replace(/日/g, " ") +"</p>"+
+						"<p class='id' style='display: none;'>"+id+"</p>"+
 						"<p class='url' style='display: none;'>"+url+"</p>"+
 					"</div>"
 				)
@@ -213,8 +214,20 @@
 					}
 				})
 				$item.on('mousedown ',function(e){
-					console.log(1);
 					open($(e.currentTarget).children('.url').html(),"_blank");
+					var updateScanNumObj=new Object();
+					updateScanNumObj.command="updateNum";
+					updateScanNumObj.id=$(e.currentTarget).children(".id").html();
+					var updateMsg=JSON.stringify(updateScanNumObj);
+					$.ajax({
+						url:"http://119.29.75.226:11911",
+						async:true,
+						type: "post",
+						dataType: "json",
+						data:{"data":updateMsg},
+						timeout:5000,
+						success:function(res){}
+					})
 				})
 				return $item;
 			}
@@ -230,7 +243,7 @@
 					type: "post",
 					dataType: "json",
 					data:{"data":sendMsg},
-					timeout:500,
+					timeout:5000,
 					success: function(data, textStatus)
 					{
 						$.each(data.data, function() {
@@ -241,8 +254,9 @@
 							var time = this.createdTime;//创建时间
 							var type = this.type;//所属类型
 							var belong = this.belong;
+							var id=this.id;
 							
-							var item = creatIconItem(name,pcUrl,address,showNum,time,type,belong);
+							var item = creatIconItem(name,pcUrl,address,showNum,time,type,belong,id);
 							items.push(item);
 
 							itemContent.append(item);
